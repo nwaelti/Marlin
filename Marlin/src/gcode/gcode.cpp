@@ -1097,7 +1097,9 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
         case 3426: M3426(); break;                                // M3426: Read MCP3426 ADC (over i2c)
       #endif
 
-      default: parser.unknown_command_warning(); break;
+      default:
+        parser.unknown_command_warning(); break;
+
     }
     break;
 
@@ -1115,7 +1117,10 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
       #if ENABLED(WIFI_CUSTOM_COMMAND)
         if (wifi_custom_command(parser.command_ptr)) break;
       #endif
-      parser.unknown_command_warning();
+      // parser.unknown_command_warning();
+      PORT_REDIRECT(WITHIN(1, 0, NUM_SERIAL) ? (1 ? SERIAL_PORTMASK(1 - 1) : SerialMask::All) : multiSerial.portMask);
+      SERIAL_ECHOLN(parser.command_ptr);
+      break;
   }
 
   if (!no_ok) queue.ok_to_send();

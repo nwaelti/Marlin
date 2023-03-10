@@ -32,6 +32,8 @@
  */
 void GcodeSuite::M10() {
   cutter.air_evac_enable();   // Turn on Vacuum or Blower motor
+  PORT_REDIRECT(WITHIN(1, 0, NUM_SERIAL) ? (1 ? SERIAL_PORTMASK(1 - 1) : SerialMask::All) : multiSerial.portMask);
+  SERIAL_ECHOLN("[ESP940] M10");
 }
 
 /**
@@ -39,6 +41,8 @@ void GcodeSuite::M10() {
  */
 void GcodeSuite::M11() {
   cutter.air_evac_disable();  // Turn off Vacuum or Blower motor
+  PORT_REDIRECT(WITHIN(1, 0, NUM_SERIAL) ? (1 ? SERIAL_PORTMASK(1 - 1) : SerialMask::All) : multiSerial.portMask);
+  SERIAL_ECHOLN("[ESP940] M11");
 }
 
 #endif // AIR_EVACUATION

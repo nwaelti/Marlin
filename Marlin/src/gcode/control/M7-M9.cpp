@@ -48,6 +48,8 @@
    */
   void GcodeSuite::M8() {
     planner.synchronize();                            // Wait for move to arrive
+    PORT_REDIRECT(WITHIN(1, 0, NUM_SERIAL) ? (1 ? SERIAL_PORTMASK(1 - 1) : SerialMask::All) : multiSerial.portMask);
+    SERIAL_ECHOLN("[ESP940] M8");
     #if ENABLED(COOLANT_FLOOD)
       WRITE(COOLANT_FLOOD_PIN, !(COOLANT_FLOOD_INVERT)); // Turn on Flood coolant
     #endif
@@ -63,6 +65,8 @@
  */
 void GcodeSuite::M9() {
   planner.synchronize();                              // Wait for move to arrive
+  PORT_REDIRECT(WITHIN(1, 0, NUM_SERIAL) ? (1 ? SERIAL_PORTMASK(1 - 1) : SerialMask::All) : multiSerial.portMask);
+  SERIAL_ECHOLN("[ESP940] M9");
   #if ENABLED(COOLANT_MIST)
     WRITE(COOLANT_MIST_PIN, COOLANT_MIST_INVERT);     // Turn off Mist coolant
   #endif
