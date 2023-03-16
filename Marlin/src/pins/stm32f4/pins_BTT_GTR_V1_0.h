@@ -1,4 +1,4 @@
-/**
+ /**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -164,39 +164,39 @@
 
 #if ENABLED(M5_EXTENDER)
 
-  #define E3_STEP_PIN                       PF3
-  #define E3_DIR_PIN                        PG3
-  #define E3_ENABLE_PIN                     PF8
+  #define Y2_STEP_PIN                       PF3
+  #define Y2_DIR_PIN                        PG3
+  #define Y2_ENABLE_PIN                     PF8
+  #ifndef Y2_CS_PIN
+    #define Y2_CS_PIN                       PG4
+  #endif
+
+  #define Z2_STEP_PIN                       PD14
+  #define Z2_DIR_PIN                        PD11
+  #define Z2_ENABLE_PIN                     PG2
+  #ifndef Z2_CS_PIN
+    #define Z2_CS_PIN                       PE15
+  #endif
+
+  #define I_STEP_PIN                       PE12
+  #define I_DIR_PIN                        PE10
+  #define I_ENABLE_PIN                     PF14
+  #ifndef I_CS_PIN
+    #define I_CS_PIN                       PE7
+  #endif
+
+  #define E3_STEP_PIN                       PG0
+  #define E3_DIR_PIN                        PG1
+  #define E3_ENABLE_PIN                     PE8
   #ifndef E3_CS_PIN
-    #define E3_CS_PIN                       PG4
+    #define E3_CS_PIN                       PF15
   #endif
 
-  #define E4_STEP_PIN                       PD14
-  #define E4_DIR_PIN                        PD11
-  #define E4_ENABLE_PIN                     PG2
+  #define E4_STEP_PIN                       PH12
+  #define E4_DIR_PIN                        PH15
+  #define E4_ENABLE_PIN                     PI0
   #ifndef E4_CS_PIN
-    #define E4_CS_PIN                       PE15
-  #endif
-
-  #define E5_STEP_PIN                       PE12
-  #define E5_DIR_PIN                        PE10
-  #define E5_ENABLE_PIN                     PF14
-  #ifndef E5_CS_PIN
-    #define E5_CS_PIN                       PE7
-  #endif
-
-  #define E6_STEP_PIN                       PG0
-  #define E6_DIR_PIN                        PG1
-  #define E6_ENABLE_PIN                     PE8
-  #ifndef E6_CS_PIN
-    #define E6_CS_PIN                       PF15
-  #endif
-
-  #define E7_STEP_PIN                       PH12
-  #define E7_DIR_PIN                        PH15
-  #define E7_ENABLE_PIN                     PI0
-  #ifndef E7_CS_PIN
-    #define E7_CS_PIN                       PH14
+    #define E4_CS_PIN                       PH14
   #endif
 
 #endif
