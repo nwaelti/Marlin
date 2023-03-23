@@ -11,13 +11,14 @@
 #define SERIAL_PORT_2 -1    // USB
 #define BAUDRATE_2 115200
 
-#define SERIAL_PORT_3 1
+#define SERIAL_PORT_3 1     // ?
 #define BAUDRATE_3 115200
 
-#define SERIAL_PORT_4 3
+#define SERIAL_PORT_4 3     // DWIN LCD
 #define BAUDRATE_4 115200
 
 #define CUSTOM_MACHINE_NAME "NWa Marlin All-in-One"
+#define NWA_BUILDNR "002"
 
 // @section stepper drivers
 #define X_DRIVER_TYPE  TMC2209
@@ -27,7 +28,7 @@
 #define Y2_DRIVER_TYPE TMC2209
 #define Z2_DRIVER_TYPE TMC2209
 #define I_DRIVER_TYPE  A4988
-//#define J_DRIVER_TYPE  A4988
+#define J_DRIVER_TYPE  A4988
 //#define K_DRIVER_TYPE  A4988
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
@@ -36,7 +37,7 @@
 #define E1_DRIVER_TYPE A4988
 #define E2_DRIVER_TYPE A4988
 #define E3_DRIVER_TYPE A4988
-#define E4_DRIVER_TYPE A4988
+// #define E4_DRIVER_TYPE A4988
 
 // @section extruder
 #define EXTRUDERS 2
@@ -226,7 +227,6 @@
 //#define FOAMCUTTER_XYUV
 
 // @section endstops
-
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
@@ -317,27 +317,28 @@
 //#define DETECT_BROKEN_ENDSTOP
 
 // @section motion
-// X, Y, Z, A, E0
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 1280, 1280, 25600, 8.8889, 400 }
+// X, Y, Z, A, B, E0
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 1280, 1280, 25600, 8.8889, 8.8889, 400 }
 
 #define MAX_FEEDRATE_X  16000 // Default Max Feed Rate (linear=mm/s, rotational=°/s) Override with M203
 #define MAX_FEEDRATE_Y  13000
 #define MAX_FEEDRATE_Z  500
 #define MAX_FEEDRATE_A  20000
+#define MAX_FEEDRATE_B  20000
 #define MAX_FEEDRATE_E  500
 
-#define DEFAULT_MAX_FEEDRATE          { MAX_FEEDRATE_X, MAX_FEEDRATE_Y, MAX_FEEDRATE_Z, MAX_FEEDRATE_A, MAX_FEEDRATE_E }
+#define DEFAULT_MAX_FEEDRATE          { MAX_FEEDRATE_X, MAX_FEEDRATE_Y, MAX_FEEDRATE_Z, MAX_FEEDRATE_A, MAX_FEEDRATE_B, MAX_FEEDRATE_E }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 32000, 26000, 1000, 20000, 1500 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 32000, 26000, 1000, 20000, 20000, 1500 } // ...or, set your own edit limits
 #endif
 
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 3000, 1000 } // M201 override
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 3000, 3000, 1000 } // M201 override
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 10000, 10000, 10000, 10000, 10000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 10000, 10000, 10000, 10000, 10000, 10000 } // ...or, set your own edit limits
 #endif
 
 #define DEFAULT_ACCELERATION          3000    // M204 P/R/T => X, Y, Z and E acceleration for printing moves
@@ -408,8 +409,7 @@
 
 // @section probes
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-#define USE_PROBE_FOR_Z_HOMING
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+// #define USE_PROBE_FOR_Z_HOMING
 //#define PROBE_MANUALLY
 
 #define LCD_BED_TRAMMING
@@ -429,11 +429,10 @@
 //#define FIX_MOUNTED_PROBE
 //#define NOZZLE_AS_PROBE
 #define Z_PROBE_SERVO_NR 0          // Defaults to SERVO 0 connector.
-#define Z_SERVO_ANGLES { 70, 0 }    // Z Servo Deploy and Stow angles
+#define Z_SERVO_ANGLES { 10, 90 }    // Z Servo Deploy and Stow angles
 //#define Z_SERVO_MEASURE_ANGLE 45    // Use if the servo must move to a "free" position for measuring after deploy.
 //#define Z_SERVO_INTERMEDIATE_STOW   // Stow the probe between points.
 
-#define BLTOUCH
 //#define SENSORLESS_PROBING
 #define NO_CONFIGURATION_EMBEDDING_WARNING
 
@@ -450,7 +449,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0, 0 , 0}
 #define PROBING_MARGIN 10
 #define XY_PROBE_FEEDRATE (300*60)
 #define Z_PROBE_FEEDRATE_FAST (10*60)
@@ -498,7 +497,7 @@
   //#define PAUSE_PROBE_DEPLOY_WHEN_TRIGGERED // For Manual Deploy Allenkey Probe
 #endif
 
-//#define PROBING_HEATERS_OFF       // Turn heaters off when probing
+#define PROBING_HEATERS_OFF       // Turn heaters off when probing
 #if ENABLED(PROBING_HEATERS_OFF)
   //#define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
   //#define WAIT_FOR_HOTEND         // Wait for hotend to heat back up between probes (to improve accuracy & prevent cold extrude)
@@ -508,7 +507,7 @@
 //#define PROBING_STEPPERS_OFF      // Turn all steppers off (unless needed to hold position) when probing (including extruders)
 //#define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
-#define PREHEAT_BEFORE_PROBING
+// #define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
   #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   #define PROBING_BED_TEMP     50
@@ -519,7 +518,7 @@
 #define Z_ENABLE_ON 0
 #define E_ENABLE_ON 0 // For all extruders
 #define I_ENABLE_ON 0
-//#define J_ENABLE_ON 0
+#define J_ENABLE_ON 0
 //#define K_ENABLE_ON 0
 //#define U_ENABLE_ON 0
 //#define V_ENABLE_ON 0
@@ -529,7 +528,7 @@
 #define DISABLE_Y false
 #define DISABLE_Z false
 #define DISABLE_I false
-//#define DISABLE_J false
+#define DISABLE_J false
 //#define DISABLE_K false
 //#define DISABLE_U false
 //#define DISABLE_V false
@@ -546,7 +545,7 @@
 #define INVERT_Y_DIR false
 #define INVERT_Z_DIR true
 #define INVERT_I_DIR false
-//#define INVERT_J_DIR false
+#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
 //#define INVERT_U_DIR false
 //#define INVERT_V_DIR false
@@ -573,7 +572,7 @@
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 #define I_HOME_DIR 0
-//#define J_HOME_DIR -1
+#define J_HOME_DIR 0
 //#define K_HOME_DIR -1
 //#define U_HOME_DIR -1
 //#define V_HOME_DIR -1
@@ -591,8 +590,8 @@
 #define Z_MAX_POS 150
 #define I_MIN_POS 0
 #define I_MAX_POS 360
-//#define J_MIN_POS 0
-//#define J_MAX_POS 50
+#define J_MIN_POS 0
+#define J_MAX_POS 360
 //#define K_MIN_POS 0
 //#define K_MAX_POS 50
 //#define U_MIN_POS 0
@@ -606,7 +605,7 @@
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
-  #define MIN_SOFTWARE_ENDSTOP_Z
+  // #define MIN_SOFTWARE_ENDSTOP_Z
   #define MIN_SOFTWARE_ENDSTOP_I
   #define MIN_SOFTWARE_ENDSTOP_J
   #define MIN_SOFTWARE_ENDSTOP_K
@@ -753,7 +752,7 @@
 //#define MANUAL_Y_HOME_POS 0
 //#define MANUAL_Z_HOME_POS 0
 #define MANUAL_I_HOME_POS 0
-//#define MANUAL_J_HOME_POS 0
+#define MANUAL_J_HOME_POS 0
 //#define MANUAL_K_HOME_POS 0
 //#define MANUAL_U_HOME_POS 0
 //#define MANUAL_V_HOME_POS 0
@@ -765,7 +764,7 @@
   #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
 #endif
 
-#define HOMING_FEEDRATE_MM_M { 1600, 1300, 250, 2000 }
+#define HOMING_FEEDRATE_MM_M { 1600, 1300, 250, 2000, 2000 }
 #define VALIDATE_HOMING_ENDSTOPS
 
 // @section calibrate
@@ -904,7 +903,7 @@
 
 // @section servos
 #define NUM_SERVOS 5 // Note: Servo index starts with 0 for M280-M282 commands
-#define SERVO_DELAY { 300, 300, 300, 300, 300 }
+#define SERVO_DELAY { 750, 300, 300, 300, 300 }
 // #define DEACTIVATE_SERVOS_AFTER_MOVE
 #define EDITABLE_SERVO_ANGLES
 #define SERVO_DETACH_GCODE

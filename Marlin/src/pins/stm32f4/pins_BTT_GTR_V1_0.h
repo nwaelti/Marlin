@@ -34,7 +34,7 @@
 #define USES_DIAG_JUMPERS
 #define HAS_OTG_USB_HOST_SUPPORT                  // USB Flash Drive support
 #define M5_EXTENDER                               // The M5 extender is attached
-#define NUM_SERVO_PLUGS 5
+#define NUM_SERVO_PLUGS 6
 
 // Onboard I2C EEPROM
 #define I2C_EEPROM
@@ -65,15 +65,15 @@
 #define X_DIAG_PIN                          PF2   // X-
 #define Y_DIAG_PIN                          PC13  // Y-
 #define Z_DIAG_PIN                          PE0   // Z-
-#define E0_DIAG_PIN                         PG14  // X+
-#define E1_DIAG_PIN                         PG9   // Y+
-#define E2_DIAG_PIN                         PD3   // Z+
+#define Y2_DIAG_PIN                         PG14  // X+
+#define Z2_DIAG_PIN                         PG9   // Y+
+#define I_DIAG_PIN                          PD3   // Z+
 
-#define M1_DIAG_PIN                         PI4   // Y2-
-#define M2_DIAG_PIN                         PF4   // Z2-
-#define M3_DIAG_PIN                         PF6   // M3
-#define M4_DIAG_PIN                         PI7   // M4
-#define M5_DIAG_PIN                         PF12  // M5
+#define J_DIAG_PIN                          PI4   // Y2-
+#define E0_DIAG_PIN                         PF4   // Z2-
+#define E1_DIAG_PIN                         PF6   // M3
+#define E2_DIAG_PIN                         PI7   // M4
+#define E3_DIAG_PIN                         PF12  // M5
 
 //
 // Limit Switches
@@ -174,83 +174,41 @@
   #define I_CS_PIN                       PC12
 #endif
 
-// #define E0_STEP_PIN                         PG12
-// #define E0_DIR_PIN                          PG11
-// #define E0_ENABLE_PIN                       PG13
-// #ifndef E0_CS_PIN
-//   #define E0_CS_PIN                         PG10
-// #endif
-
-// #define E1_STEP_PIN                         PD6
-// #define E1_DIR_PIN                          PD5
-// #define E1_ENABLE_PIN                       PD7
-// #ifndef E1_CS_PIN
-//   #define E1_CS_PIN                         PD4
-// #endif
-
-// #define E2_STEP_PIN                         PD1
-// #define E2_DIR_PIN                          PD0
-// #define E2_ENABLE_PIN                       PD2
-// #ifndef E2_CS_PIN
-//   #define E2_CS_PIN                         PC12
-// #endif
-
 #if ENABLED(M5_EXTENDER)
 
-  // #define Y2_STEP_PIN                       PF3
-  // #define Y2_DIR_PIN                        PG3
-  // #define Y2_ENABLE_PIN                     PF8
-  // #ifndef Y2_CS_PIN
-  //   #define Y2_CS_PIN                       PG4
-  // #endif
+  #define J_STEP_PIN                          PF3
+  #define J_DIR_PIN                           PG3
+  #define J_ENABLE_PIN                        PF8
+  #ifndef J_CS_PIN
+    #define J_CS_PIN                          PG4
+  #endif
 
-  // #define Z2_STEP_PIN                       PD14
-  // #define Z2_DIR_PIN                        PD11
-  // #define Z2_ENABLE_PIN                     PG2
-  // #ifndef Z2_CS_PIN
-  //   #define Z2_CS_PIN                       PE15
-  // #endif
-
-  // #define I_STEP_PIN                       PE12
-  // #define I_DIR_PIN                        PE10
-  // #define I_ENABLE_PIN                     PF14
-  // #ifndef I_CS_PIN
-  //   #define I_CS_PIN                       PE7
-  // #endif
-
-  #define E0_STEP_PIN                          PF3
-  #define E0_DIR_PIN                           PG3
-  #define E0_ENABLE_PIN                        PF8
+  #define E0_STEP_PIN                          PD14
+  #define E0_DIR_PIN                           PD11
+  #define E0_ENABLE_PIN                        PG2
   #ifndef E0_CS_PIN
-    #define E0_CS_PIN                          PG4
+    #define E0_CS_PIN                          PE15
   #endif
 
-  #define E1_STEP_PIN                          PD14
-  #define E1_DIR_PIN                           PD11
-  #define E1_ENABLE_PIN                        PG2
+  #define E1_STEP_PIN                         PE12
+  #define E1_DIR_PIN                          PE10
+  #define E1_ENABLE_PIN                       PF14
   #ifndef E1_CS_PIN
-    #define E1_CS_PIN                          PE15
+    #define E1_CS_PIN                         PE7
   #endif
 
-  #define E2_STEP_PIN                         PE12
-  #define E2_DIR_PIN                          PE10
-  #define E2_ENABLE_PIN                       PF14
+  #define E2_STEP_PIN                       PG0
+  #define E2_DIR_PIN                        PG1
+  #define E2_ENABLE_PIN                     PE8
   #ifndef E2_CS_PIN
-    #define E2_CS_PIN                         PE7
+    #define E2_CS_PIN                       PF15
   #endif
 
-  #define E3_STEP_PIN                       PG0
-  #define E3_DIR_PIN                        PG1
-  #define E3_ENABLE_PIN                     PE8
+  #define E3_STEP_PIN                       PH12
+  #define E3_DIR_PIN                        PH15
+  #define E3_ENABLE_PIN                     PI0
   #ifndef E3_CS_PIN
-    #define E3_CS_PIN                       PF15
-  #endif
-
-  #define E4_STEP_PIN                       PH12
-  #define E4_DIR_PIN                        PH15
-  #define E4_ENABLE_PIN                     PI0
-  #ifndef E4_CS_PIN
-    #define E4_CS_PIN                       PH14
+    #define E3_CS_PIN                       PH14
   #endif
 
 #endif
@@ -310,40 +268,21 @@
   #define I_SERIAL_TX_PIN                PC12
   #define I_SERIAL_RX_PIN     I_SERIAL_TX_PIN
 
-  // #define E0_SERIAL_TX_PIN                  PG10
-  // #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
-
-  // #define E1_SERIAL_TX_PIN                  PD4
-  // #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
-
-  // #define E2_SERIAL_TX_PIN                  PC12
-  // #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
-
   #if ENABLED(M5_EXTENDER)
-    // #define Y2_SERIAL_TX_PIN                PG4
-    // #define Y2_SERIAL_RX_PIN    Y2_SERIAL_TX_PIN
+    #define J_SERIAL_TX_PIN                  PG4
+    #define J_SERIAL_RX_PIN      J_SERIAL_TX_PIN
 
-    // #define Z2_SERIAL_TX_PIN                PE15
-    // #define Z2_SERIAL_RX_PIN    Z2_SERIAL_TX_PIN
+    #define E0_SERIAL_TX_PIN                  PE15
+    #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
 
-    // #define I_SERIAL_TX_PIN                PE7
-    // #define I_SERIAL_RX_PIN     I_SERIAL_TX_PIN
+    #define E1_SERIAL_TX_PIN                  PE7
+    #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
 
-  #define E0_SERIAL_TX_PIN                  PG4
-  #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
+    #define E2_SERIAL_TX_PIN                PF15
+    #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
 
-  #define E1_SERIAL_TX_PIN                  PE15
-  #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
-
-  #define E2_SERIAL_TX_PIN                  PE7
-  #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
-
-
-    #define E3_SERIAL_TX_PIN                PF15
-    #define E3_SERIAL_RX_PIN    E3_SERIAL_TX_PIN
-
-    #define E4_SERIAL_TX_PIN                PH14
-    #define E4_SERIAL_RX_PIN    E4_SERIAL_TX_PIN
+    #define E3_SERIAL_TX_PIN                PH14
+    #define E3_SERIAL_RX_PIN      E3_SERIAL_TX_PIN
   #endif
 
   // Reduce baud rate to improve software serial reliability
@@ -463,105 +402,6 @@
 #define EXP2_05_PIN                         PH10
 #define EXP2_06_PIN                         PB15
 #define EXP2_07_PIN                         PB10
-
-//
-// LCDs and Controllers
-//
-#if ANY(TFT_COLOR_UI, TFT_LVGL_UI, TFT_CLASSIC_UI)
-
-  #define TFT_CS_PIN                 EXP2_04_PIN
-  #define TFT_A0_PIN                 EXP2_07_PIN
-  #define TFT_SCK_PIN                EXP2_02_PIN
-  #define TFT_MISO_PIN               EXP2_01_PIN
-  #define TFT_MOSI_PIN               EXP2_06_PIN
-
-  #define TOUCH_INT_PIN              EXP1_07_PIN
-  #define TOUCH_MISO_PIN             EXP1_06_PIN
-  #define TOUCH_MOSI_PIN             EXP1_03_PIN
-  #define TOUCH_SCK_PIN              EXP1_05_PIN
-  #define TOUCH_CS_PIN               EXP1_04_PIN
-  #define BTN_ENC                    EXP1_02_PIN
-  #define BTN_EN1                    EXP2_03_PIN
-  #define BTN_EN2                    EXP2_05_PIN
-
-#elif HAS_WIRED_LCD
-  #define BEEPER_PIN                 EXP1_01_PIN
-  #define BTN_ENC                    EXP1_02_PIN
-
-  #if ENABLED(CR10_STOCKDISPLAY)
-    #define LCD_PINS_RS              EXP1_07_PIN
-
-    #define BTN_EN1                  EXP1_03_PIN
-    #define BTN_EN2                  EXP1_05_PIN
-
-    #define LCD_PINS_ENABLE          EXP1_08_PIN
-    #define LCD_PINS_D4              EXP1_06_PIN
-
-  #elif ENABLED(MKS_MINI_12864)
-    #define DOGLCD_A0                EXP1_07_PIN
-    #define DOGLCD_CS                EXP1_06_PIN
-    #define BTN_EN1                  EXP2_03_PIN
-    #define BTN_EN2                  EXP2_05_PIN
-
-    #if SD_CONNECTION_IS(ONBOARD)
-      #define SOFTWARE_SPI
-    #endif
-  #else
-
-    #define LCD_PINS_RS              EXP1_04_PIN
-
-    #define BTN_EN1                  EXP2_03_PIN
-    #define BTN_EN2                  EXP2_05_PIN
-
-    #define LCD_PINS_ENABLE          EXP1_03_PIN
-    #define LCD_PINS_D4              EXP1_05_PIN
-
-    #if ENABLED(FYSETC_MINI_12864)
-      #define DOGLCD_CS              EXP1_03_PIN
-      #define DOGLCD_A0              EXP1_04_PIN
-
-      #if SD_CONNECTION_IS(ONBOARD)
-        #define SOFTWARE_SPI
-      #endif
-
-      //#define LCD_BACKLIGHT_PIN           -1
-      #define LCD_RESET_PIN          EXP1_05_PIN  // Must be high or open for LCD to operate normally.
-      #if EITHER(FYSETC_MINI_12864_1_2, FYSETC_MINI_12864_2_0)
-        #ifndef RGB_LED_R_PIN
-          #define RGB_LED_R_PIN      EXP1_06_PIN
-        #endif
-        #ifndef RGB_LED_G_PIN
-          #define RGB_LED_G_PIN      EXP1_07_PIN
-        #endif
-        #ifndef RGB_LED_B_PIN
-          #define RGB_LED_B_PIN      EXP1_08_PIN
-        #endif
-      #elif ENABLED(FYSETC_MINI_12864_2_1)
-        #define NEOPIXEL_PIN         EXP1_06_PIN
-      #endif
-    #endif // !FYSETC_MINI_12864
-
-    #if IS_ULTIPANEL
-      #define LCD_PINS_D5            EXP1_06_PIN
-      #define LCD_PINS_D6            EXP1_07_PIN
-      #define LCD_PINS_D7            EXP1_08_PIN
-
-      #if ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
-        #define BTN_ENC_EN           LCD_PINS_D7  // Detect the presence of the encoder
-      #endif
-
-    #endif
-
-  #endif
-
-  // Alter timing for graphical display
-  #if IS_U8GLIB_ST7920
-    #define BOARD_ST7920_DELAY_1             125
-    #define BOARD_ST7920_DELAY_2              90
-    #define BOARD_ST7920_DELAY_3             600
-  #endif
-
-#endif // HAS_WIRED_LCD
 
 #undef TP
 #undef M5_EXTENDER
