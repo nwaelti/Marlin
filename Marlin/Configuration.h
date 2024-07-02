@@ -9,7 +9,7 @@
 #define BAUDRATE 115200
 
 #define SERIAL_PORT_2 -1    // USB
-#define BAUDRATE_2 115200
+#define BAUDRATE_2 230400
 
 #define SERIAL_PORT_3 1     // ?
 #define BAUDRATE_3 115200
@@ -18,7 +18,7 @@
 #define BAUDRATE_4 115200
 
 #define CUSTOM_MACHINE_NAME "NWa Marlin All-in-One"
-#define NWA_BUILDNR "002"
+#define NWA_BUILDNR "2024070101"
 
 // @section stepper drivers
 #define X_DRIVER_TYPE  TMC2209
@@ -27,24 +27,24 @@
 //#define X2_DRIVER_TYPE TMC2209
 #define Y2_DRIVER_TYPE TMC2209
 #define Z2_DRIVER_TYPE TMC2209
-#define I_DRIVER_TYPE  A4988
-#define J_DRIVER_TYPE  A4988
-//#define K_DRIVER_TYPE  A4988
-//#define U_DRIVER_TYPE  A4988
+#define I_DRIVER_TYPE  TMC2209
+#define J_DRIVER_TYPE  TMC2209
+#define K_DRIVER_TYPE  TMC2209
+// #define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE A4988
-#define E1_DRIVER_TYPE A4988
-#define E2_DRIVER_TYPE A4988
-#define E3_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE TMC2209
+// #define E1_DRIVER_TYPE TMC2209
+// #define E2_DRIVER_TYPE A4988
+// #define E3_DRIVER_TYPE A4988
 // #define E4_DRIVER_TYPE A4988
 
 // @section extruder
-#define EXTRUDERS 2
+#define EXTRUDERS 1
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
 
 //#define SWITCHING_TOOLHEAD
-#define MAGNETIC_SWITCHING_TOOLHEAD
+// #define MAGNETIC_SWITCHING_TOOLHEAD
 //#define ELECTROMAGNETIC_SWITCHING_TOOLHEAD
 
 #if ANY(SWITCHING_TOOLHEAD, MAGNETIC_SWITCHING_TOOLHEAD, ELECTROMAGNETIC_SWITCHING_TOOLHEAD)
@@ -246,51 +246,51 @@
 //#define USE_VMAX_PLUG
 //#define USE_WMAX_PLUG
 
-#define ENDSTOPPULLUPS
+// #define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
-  //#define ENDSTOPPULLUP_XMIN
-  //#define ENDSTOPPULLUP_YMIN
-  //#define ENDSTOPPULLUP_ZMIN
-  //#define ENDSTOPPULLUP_IMIN
-  //#define ENDSTOPPULLUP_JMIN
-  //#define ENDSTOPPULLUP_KMIN
-  //#define ENDSTOPPULLUP_UMIN
-  //#define ENDSTOPPULLUP_VMIN
-  //#define ENDSTOPPULLUP_WMIN
-  //#define ENDSTOPPULLUP_XMAX
-  //#define ENDSTOPPULLUP_YMAX
-  //#define ENDSTOPPULLUP_ZMAX
-  //#define ENDSTOPPULLUP_IMAX
-  //#define ENDSTOPPULLUP_JMAX
-  //#define ENDSTOPPULLUP_KMAX
-  //#define ENDSTOPPULLUP_UMAX
-  //#define ENDSTOPPULLUP_VMAX
-  //#define ENDSTOPPULLUP_WMAX
-  //#define ENDSTOPPULLUP_ZMIN_PROBE
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+  #define ENDSTOPPULLUP_ZMIN
+  #define ENDSTOPPULLUP_IMIN
+  #define ENDSTOPPULLUP_JMIN
+  #define ENDSTOPPULLUP_KMIN
+  #define ENDSTOPPULLUP_UMIN
+  #define ENDSTOPPULLUP_VMIN
+  #define ENDSTOPPULLUP_WMIN
+  #define ENDSTOPPULLUP_XMAX
+  #define ENDSTOPPULLUP_YMAX
+  #define ENDSTOPPULLUP_ZMAX
+  #define ENDSTOPPULLUP_IMAX
+  #define ENDSTOPPULLUP_JMAX
+  #define ENDSTOPPULLUP_KMAX
+  #define ENDSTOPPULLUP_UMAX
+  #define ENDSTOPPULLUP_VMAX
+  #define ENDSTOPPULLUP_WMAX
+  #define ENDSTOPPULLUP_ZMIN_PROBE
 #endif
 
 //#define ENDSTOPPULLDOWNS
-#if DISABLED(ENDSTOPPULLDOWNS)
-  //#define ENDSTOPPULLDOWN_XMIN
-  //#define ENDSTOPPULLDOWN_YMIN
-  //#define ENDSTOPPULLDOWN_ZMIN
-  //#define ENDSTOPPULLDOWN_IMIN
-  //#define ENDSTOPPULLDOWN_JMIN
-  //#define ENDSTOPPULLDOWN_KMIN
-  //#define ENDSTOPPULLDOWN_UMIN
-  //#define ENDSTOPPULLDOWN_VMIN
-  //#define ENDSTOPPULLDOWN_WMIN
-  //#define ENDSTOPPULLDOWN_XMAX
-  //#define ENDSTOPPULLDOWN_YMAX
-  //#define ENDSTOPPULLDOWN_ZMAX
-  //#define ENDSTOPPULLDOWN_IMAX
-  //#define ENDSTOPPULLDOWN_JMAX
-  //#define ENDSTOPPULLDOWN_KMAX
-  //#define ENDSTOPPULLDOWN_UMAX
-  //#define ENDSTOPPULLDOWN_VMAX
-  //#define ENDSTOPPULLDOWN_WMAX
-  //#define ENDSTOPPULLDOWN_ZMIN_PROBE
-#endif
+// #if DISABLED(ENDSTOPPULLDOWNS)
+//   #define ENDSTOPPULLDOWN_XMIN
+//   #define ENDSTOPPULLDOWN_YMIN
+//   #define ENDSTOPPULLDOWN_ZMIN
+//   #define ENDSTOPPULLDOWN_IMIN
+//   #define ENDSTOPPULLDOWN_JMIN
+//   #define ENDSTOPPULLDOWN_KMIN
+//   #define ENDSTOPPULLDOWN_UMIN
+//   #define ENDSTOPPULLDOWN_VMIN
+//   #define ENDSTOPPULLDOWN_WMIN
+//   #define ENDSTOPPULLDOWN_XMAX
+//   #define ENDSTOPPULLDOWN_YMAX
+//   #define ENDSTOPPULLDOWN_ZMAX
+//   #define ENDSTOPPULLDOWN_IMAX
+//   #define ENDSTOPPULLDOWN_JMAX
+//   #define ENDSTOPPULLDOWN_KMAX
+//   #define ENDSTOPPULLDOWN_UMAX
+//   #define ENDSTOPPULLDOWN_VMAX
+//   #define ENDSTOPPULLDOWN_WMAX
+//   #define ENDSTOPPULLDOWN_ZMIN_PROBE
+// #endif
 
 #define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
@@ -312,38 +312,39 @@
 #define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 
-//#define ENDSTOP_INTERRUPTS_FEATURE
+#define ENDSTOP_INTERRUPTS_FEATURE
 //#define ENDSTOP_NOISE_THRESHOLD 2
 //#define DETECT_BROKEN_ENDSTOP
 
 // @section motion
-// X, Y, Z, A, B, E0
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 1280, 1280, 25600, 8.8889, 8.8889, 400 }
+// X, Y, Z, A, B, U, E0
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 35.55, 35.55, 80, 7456 }
 
-#define MAX_FEEDRATE_X  16000 // Default Max Feed Rate (linear=mm/s, rotational=°/s) Override with M203
-#define MAX_FEEDRATE_Y  13000
-#define MAX_FEEDRATE_Z  500
-#define MAX_FEEDRATE_A  20000
-#define MAX_FEEDRATE_B  20000
-#define MAX_FEEDRATE_E  500
+#define MAX_FEEDRATE_X  1160 // Default Max Feed Rate (linear=mm/s, rotational=°/s) Override with M203
+#define MAX_FEEDRATE_Y  1160
+#define MAX_FEEDRATE_Z  12.5
+#define MAX_FEEDRATE_A  145
+#define MAX_FEEDRATE_B  145
+#define MAX_FEEDRATE_C  145
+#define MAX_FEEDRATE_E  12.5
 
-#define DEFAULT_MAX_FEEDRATE          { MAX_FEEDRATE_X, MAX_FEEDRATE_Y, MAX_FEEDRATE_Z, MAX_FEEDRATE_A, MAX_FEEDRATE_B, MAX_FEEDRATE_E }
+#define DEFAULT_MAX_FEEDRATE          { MAX_FEEDRATE_X, MAX_FEEDRATE_Y, MAX_FEEDRATE_Z, MAX_FEEDRATE_A, MAX_FEEDRATE_B, MAX_FEEDRATE_C, MAX_FEEDRATE_E }
 
-#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
+// #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 32000, 26000, 1000, 20000, 20000, 1500 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 500, 500, 15, 500, 500, 500, 500 } // ...or, set your own edit limits
 #endif
 
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 3000, 3000, 1000 } // M201 override
+#define DEFAULT_MAX_ACCELERATION      { 500, 500, 200, 500, 500, 500, 500 } // M201 override
 
-#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
+// #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 10000, 10000, 10000, 10000, 10000, 10000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 3000, 3000, 1000, 3000, 3000, 3000, 3000 } // ...or, set your own edit limits
 #endif
 
-#define DEFAULT_ACCELERATION          3000    // M204 P/R/T => X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          1000    // M204 P/R/T => X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * AXISn_NAME defines the letter used to refer to the axis in (most) G-code commands.
@@ -363,8 +364,8 @@
   #define AXIS5_ROTATES
 #endif
 #ifdef K_DRIVER_TYPE
-  #define AXIS6_NAME 'C' // :['C', 'U', 'V', 'W']
-  #define AXIS6_ROTATES
+  #define AXIS6_NAME 'U' // :['C', 'U', 'V', 'W']
+  // #define AXIS6_ROTATES
 #endif
 #ifdef U_DRIVER_TYPE
   #define AXIS7_NAME 'U' // :['U', 'V', 'W']
@@ -379,7 +380,7 @@
   //#define AXIS9_ROTATES
 #endif
 
-//#define CLASSIC_JERK
+#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK) // Override with M205 X Y Z . . . E
   #define DEFAULT_XJERK 10.0
   #define DEFAULT_YJERK 10.0
@@ -408,11 +409,12 @@
 #define S_CURVE_ACCELERATION
 
 // @section probes
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+// #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 // #define USE_PROBE_FOR_Z_HOMING
+// #define HOMING_Z_WITH_PROBE 1
 //#define PROBE_MANUALLY
 
-#define LCD_BED_TRAMMING
+// #define LCD_BED_TRAMMING
 #if ENABLED(LCD_BED_TRAMMING)
   #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
@@ -426,14 +428,15 @@
   #endif
 #endif
 
+// #define BLTOUCH
+// #define Z_PROBE_SERVO_NR 0          // Defaults to SERVO 0 connector.
+// #define Z_SERVO_ANGLES { 10, 90 }    // Z Servo Deploy and Stow angles
+//#define Z_SERVO_MEASURE_ANGLE 45    // Use if the servo must move to a "free" position for measuring after deploy.
+//#define Z_SERVO_INTERMEDIATE_STOW   // Stow the probe between points
+
 //#define FIX_MOUNTED_PROBE
 //#define NOZZLE_AS_PROBE
-#define Z_PROBE_SERVO_NR 0          // Defaults to SERVO 0 connector.
-#define Z_SERVO_ANGLES { 10, 90 }    // Z Servo Deploy and Stow angles
-//#define Z_SERVO_MEASURE_ANGLE 45    // Use if the servo must move to a "free" position for measuring after deploy.
-//#define Z_SERVO_INTERMEDIATE_STOW   // Stow the probe between points.
-
-//#define SENSORLESS_PROBING
+// #define SENSORLESS_PROBING
 #define NO_CONFIGURATION_EMBEDDING_WARNING
 
 /**
@@ -449,7 +452,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0, 0 , 0}
+#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0, 0, 0, 0}
 #define PROBING_MARGIN 10
 #define XY_PROBE_FEEDRATE (300*60)
 #define Z_PROBE_FEEDRATE_FAST (10*60)
@@ -479,8 +482,8 @@
 
 //#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
-#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
+#define Z_CLEARANCE_DEPLOY_PROBE   5 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  2 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
@@ -519,8 +522,8 @@
 #define E_ENABLE_ON 0 // For all extruders
 #define I_ENABLE_ON 0
 #define J_ENABLE_ON 0
-//#define K_ENABLE_ON 0
-//#define U_ENABLE_ON 0
+#define K_ENABLE_ON 0
+// #define U_ENABLE_ON 0
 //#define V_ENABLE_ON 0
 //#define W_ENABLE_ON 0
 
@@ -529,8 +532,8 @@
 #define DISABLE_Z false
 #define DISABLE_I false
 #define DISABLE_J false
-//#define DISABLE_K false
-//#define DISABLE_U false
+#define DISABLE_K false
+// #define DISABLE_U false
 //#define DISABLE_V false
 //#define DISABLE_W false
 
@@ -546,41 +549,41 @@
 #define INVERT_Z_DIR true
 #define INVERT_I_DIR false
 #define INVERT_J_DIR false
-//#define INVERT_K_DIR false
-//#define INVERT_U_DIR false
+#define INVERT_K_DIR false
+// #define INVERT_U_DIR false
 //#define INVERT_V_DIR false
 //#define INVERT_W_DIR false
 
 // @section extruder
 #define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
-#define INVERT_E2_DIR false
-#define INVERT_E3_DIR false
-#define INVERT_E4_DIR false
-#define INVERT_E5_DIR false
-#define INVERT_E6_DIR false
-#define INVERT_E7_DIR false
+// #define INVERT_E2_DIR false
+// #define INVERT_E3_DIR false
+// #define INVERT_E4_DIR false
+// #define INVERT_E5_DIR false
+// #define INVERT_E6_DIR false
+// #define INVERT_E7_DIR false
 
 // @section homing
 //#define NO_MOTION_BEFORE_HOMING // Inhibit movement until all axes have been homed. Also enable HOME_AFTER_DEACTIVATE for extra safety.
 //#define HOME_AFTER_DEACTIVATE   // Require rehoming after steppers are deactivated. Also enable NO_MOTION_BEFORE_HOMING for extra safety.
 //#define Z_IDLE_HEIGHT Z_HOME_POS
-//#define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
-//#define Z_AFTER_HOMING  10      // (mm) Height to move to after homing Z
+#define Z_HOMING_HEIGHT  0      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
+#define Z_AFTER_HOMING  0      // (mm) Height to move to after homing Z
 
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 #define I_HOME_DIR 0
 #define J_HOME_DIR 0
-//#define K_HOME_DIR -1
-//#define U_HOME_DIR -1
+#define K_HOME_DIR 0
+// #define U_HOME_DIR -1
 //#define V_HOME_DIR -1
 //#define W_HOME_DIR -1
 
 // @section geometry
-#define X_BED_SIZE 900
-#define Y_BED_SIZE 500
+#define X_BED_SIZE 890
+#define Y_BED_SIZE 510
 
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
@@ -592,10 +595,10 @@
 #define I_MAX_POS 360
 #define J_MIN_POS 0
 #define J_MAX_POS 360
-//#define K_MIN_POS 0
-//#define K_MAX_POS 50
-//#define U_MIN_POS 0
-//#define U_MAX_POS 50
+#define K_MIN_POS 0
+#define K_MAX_POS X_BED_SIZE
+// #define U_MIN_POS 0
+// #define U_MAX_POS X_BED_SIZE
 //#define V_MIN_POS 0
 //#define V_MAX_POS 50
 //#define W_MIN_POS 0
@@ -631,7 +634,7 @@
   //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
 #endif
 
-#define FILAMENT_RUNOUT_SENSOR
+// #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
@@ -686,7 +689,7 @@
 // @section calibrate
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR
+// #define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -753,7 +756,7 @@
 //#define MANUAL_Z_HOME_POS 0
 #define MANUAL_I_HOME_POS 0
 #define MANUAL_J_HOME_POS 0
-//#define MANUAL_K_HOME_POS 0
+#define MANUAL_K_HOME_POS 0
 //#define MANUAL_U_HOME_POS 0
 //#define MANUAL_V_HOME_POS 0
 //#define MANUAL_W_HOME_POS 0
@@ -764,7 +767,7 @@
   #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
 #endif
 
-#define HOMING_FEEDRATE_MM_M { 1600, 1300, 250, 2000, 2000 }
+#define HOMING_FEEDRATE_MM_M { 1500, 1500, 250, 2000, 2000, 1500 }
 #define VALIDATE_HOMING_ENDSTOPS
 
 // @section calibrate
@@ -844,7 +847,7 @@
 
 // @section motion
 
-#define NOZZLE_PARK_FEATURE
+// #define NOZZLE_PARK_FEATURE
 #if ENABLED(NOZZLE_PARK_FEATURE)
   #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MAX_POS - 10), 20 }
   #define NOZZLE_PARK_MOVE          0   // Park motion: 0 = XY Move, 1 = X Only, 2 = Y Only, 3 = X before Y, 4 = Y before X
@@ -875,7 +878,7 @@
 #define PRINTJOB_TIMER_AUTOSTART
 
 // @section stats
-#define PRINTCOUNTER
+// #define PRINTCOUNTER
 #if ENABLED(PRINTCOUNTER)
   #define PRINTCOUNTER_SAVE_INTERVAL 60 // (minutes) EEPROM save interval during print. A value of 0 will save stats at end of print.
 #endif
@@ -892,18 +895,19 @@
 //#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
 //#define LCD_FEEDBACK_FREQUENCY_HZ 5000
 
-#define DGUS_LCD_UI RELOADED
+// #define DGUS_LCD_UI RELOADED
 
 // @section fans
 #define NUM_M106_FANS 8
 #define SOFT_PWM_SCALE 0
 
 // @section extras
-#define BARICUDA
+// #define BARICUDA
 
 // @section servos
-#define NUM_SERVOS 5 // Note: Servo index starts with 0 for M280-M282 commands
-#define SERVO_DELAY { 750, 300, 300, 300, 300 }
+#define NUM_SERVOS 1 // Note: Servo index starts with 0 for M280-M282 commands
+// #define SERVO_DELAY { 250, 250, 250, 250 }
+#define SERVO_DELAY { 300 }
 // #define DEACTIVATE_SERVOS_AFTER_MOVE
 #define EDITABLE_SERVO_ANGLES
 #define SERVO_DETACH_GCODE

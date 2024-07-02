@@ -334,12 +334,6 @@
 // @section extruder
 #define E0_AUTO_FAN_PIN -1
 #define E1_AUTO_FAN_PIN -1
-#define E2_AUTO_FAN_PIN -1
-#define E3_AUTO_FAN_PIN -1
-#define E4_AUTO_FAN_PIN -1
-#define E5_AUTO_FAN_PIN -1
-#define E6_AUTO_FAN_PIN -1
-#define E7_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
 #define COOLER_AUTO_FAN_PIN -1
 
@@ -357,24 +351,6 @@
 //#define E1_FAN_TACHO_PIN -1
 //#define E1_FAN_TACHO_PULLUP
 //#define E1_FAN_TACHO_PULLDOWN
-//#define E2_FAN_TACHO_PIN -1
-//#define E2_FAN_TACHO_PULLUP
-//#define E2_FAN_TACHO_PULLDOWN
-//#define E3_FAN_TACHO_PIN -1
-//#define E3_FAN_TACHO_PULLUP
-//#define E3_FAN_TACHO_PULLDOWN
-//#define E4_FAN_TACHO_PIN -1
-//#define E4_FAN_TACHO_PULLUP
-//#define E4_FAN_TACHO_PULLDOWN
-//#define E5_FAN_TACHO_PIN -1
-//#define E5_FAN_TACHO_PULLUP
-//#define E5_FAN_TACHO_PULLDOWN
-//#define E6_FAN_TACHO_PIN -1
-//#define E6_FAN_TACHO_PULLUP
-//#define E6_FAN_TACHO_PULLDOWN
-//#define E7_FAN_TACHO_PIN -1
-//#define E7_FAN_TACHO_PULLUP
-//#define E7_FAN_TACHO_PULLDOWN
 
 #define FANMUX0_PIN -1
 #define FANMUX1_PIN -1
@@ -403,7 +379,7 @@
 
 #if HAS_DUAL_Y_STEPPERS
   #define INVERT_Y2_VS_Y_DIR        // Y2 direction signal is the opposite of Y
-  //#define Y_DUAL_ENDSTOPS         // Y2 has its own endstop
+  // #define Y_DUAL_ENDSTOPS         // Y2 has its own endstop
   #if ENABLED(Y_DUAL_ENDSTOPS)
     #define Y2_USE_ENDSTOP    _YMAX_  // Y2 endstop board plug. Don't forget to enable USE_*_PLUG.
     #define Y2_ENDSTOP_ADJUSTMENT  0  // Y2 offset relative to Y endstop
@@ -412,7 +388,7 @@
 
 #ifdef Z2_DRIVER_TYPE
   // #define INVERT_Z2_VS_Z_DIR        // Z2 direction signal is the opposite of Z
-  //#define Z_MULTI_ENDSTOPS          // Other Z axes have their own endstops
+  // #define Z_MULTI_ENDSTOPS          // Other Z axes have their own endstops
   #if ENABLED(Z_MULTI_ENDSTOPS)
     #define Z2_USE_ENDSTOP   _XMAX_   // Z2 endstop board plug. Don't forget to enable USE_*_PLUG.
     #define Z2_ENDSTOP_ADJUSTMENT 0   // Z2 offset relative to Z endstop
@@ -439,10 +415,10 @@
 #endif
 
 // @section homing
-#define SENSORLESS_BACKOFF_MM  { 5, 5, 0, 0, 0 }    // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
-#define HOMING_BUMP_MM      { 2, 2, 2, 0, 0 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
-#define HOMING_BUMP_DIVISOR { 2, 2, 4, 2, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
-#define HOMING_BACKOFF_POST_MM { 0, 0, 1, 0, 0 }    // (linear=mm, rotational=°) Backoff from endstops after homing
+#define SENSORLESS_BACKOFF_MM  { 5, 5, 0, 0, 0, 0 }    // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
+#define HOMING_BUMP_MM      { 0, 0, 0, 0, 0, 0 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
+#define HOMING_BUMP_DIVISOR { 2, 2, 4, 2, 2, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BACKOFF_POST_MM { 0, 0, 0, 0, 0, 0 }    // (linear=mm, rotational=°) Backoff from endstops after homing
 //#define XY_COUNTERPART_BACKOFF_MM 0         // (mm) Backoff X after homing Y, and vice-versa
 #define QUICK_HOME                            // If G28 contains XY do a diagonal move first
 #define HOME_Y_BEFORE_X                       // If G28 contains XY home Y before X
@@ -450,19 +426,17 @@
 //#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
 
 // @section bltouch
-#define BLTOUCH
 #if ENABLED(BLTOUCH)
   #define BLTOUCH_DELAY 500
-  #define BLTOUCH_FORCE_SW_MODE
+  // #define BLTOUCH_FORCE_SW_MODE
   //#define BLTOUCH_SET_5V_MODE
   //#define BLTOUCH_FORCE_MODE_SET
-  #define BLTOUCH_HS_MODE true
+  // #define BLTOUCH_HS_MODE true
   //#define BLTOUCH_LCD_VOLTAGE_MENU
 #endif // BLTOUCH
 
 // @section extras
-
-#define ASSISTED_TRAMMING
+// #define ASSISTED_TRAMMING
 #if ENABLED(ASSISTED_TRAMMING)
   #define TRAMMING_POINT_XY { {  20, 20 }, { 180,  20 }, { 180, 180 }, { 20, 180 } }
   #define TRAMMING_POINT_NAME_1 "Front-Left"
@@ -478,7 +452,7 @@
 #endif
 
 // @section motion
-#define AXIS_RELATIVE_MODES { false, false, false, true, true, false }
+#define AXIS_RELATIVE_MODES { false, false, false, true, true, false, false }
 
 //#define MULTI_NOZZLE_DUPLICATION
 #define STEP_STATE_X HIGH
@@ -526,11 +500,11 @@
 //#define MICROSTEP16 LOW,LOW,HIGH
 //#define MICROSTEP32 HIGH,LOW,HIGH
 
-#define MICROSTEP_MODES { 16, 16, 16, 16, 16, 16 } // [1,2,4,8,16]
+#define MICROSTEP_MODES { 64, 64, 16, 16, 16, 16, 16 } // [1,2,4,8,16]
 
 // @section lcd
 #if HAS_MANUAL_MOVE_MENU
-  #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60, 50*60, 50*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60, 50*60, 50*60, 50*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
   #define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
   #if IS_ULTIPANEL
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
@@ -892,7 +866,7 @@
 // @section serial
 #define MAX_CMD_SIZE 96
 #define BUFSIZE 4
-#define TX_BUFFER_SIZE 128
+#define TX_BUFFER_SIZE 256
 //#define RX_BUFFER_SIZE 1024
 #if RX_BUFFER_SIZE >= 1024
   //#define SERIAL_XON_XOFF
@@ -907,7 +881,7 @@
 #define EMERGENCY_PARSER
 #define REALTIME_REPORTING_COMMANDS
 #if ENABLED(REALTIME_REPORTING_COMMANDS)
-  #define FULL_REPORT_TO_HOST_FEATURE   // Auto-report the machine status like Grbl CNC
+  // #define FULL_REPORT_TO_HOST_FEATURE   // Auto-report the machine status like Grbl CNC
 #endif
 
 //#define NO_TIMEOUTS 1000 // Milliseconds
@@ -921,7 +895,7 @@
 #define EXTRA_FAN_SPEED //M106  P<fan> T[1-2-3]
 
 // @section advanced pause
-#define ADVANCED_PAUSE_FEATURE
+// #define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.
@@ -953,7 +927,6 @@
   //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
 #endif
 
-
 // @section cnc
 //#define SPINDLE_FEATURE
 #define LASER_FEATURE
@@ -962,7 +935,7 @@
   #define SPINDLE_LASER_USE_PWM                // Enable if your controller supports setting the speed/power
   #if ENABLED(SPINDLE_LASER_USE_PWM)
     #define SPINDLE_LASER_PWM_INVERT    false  // Set to "true" if the speed/power goes up when you want it to go slower
-    #define SPINDLE_LASER_FREQUENCY     20000   // (Hz) Spindle/laser frequency (only on supported HALs: AVR, ESP32, and LPC)
+    #define SPINDLE_LASER_FREQUENCY     40000   // (Hz) Spindle/laser frequency (only on supported HALs: AVR, ESP32, and LPC)
     #define SPINDLE_LASER_PWM_PIN       PH6
   #endif
 
@@ -984,7 +957,7 @@
     #define SPINDLE_SERVO_MIN 10               // Minimum angle for servo spindle
   #endif
 
-  #define CUTTER_POWER_UNIT PWM255
+  #define CUTTER_POWER_UNIT PERCENT
   //#define CUTTER_POWER_RELATIVE              // Set speed proportional to [SPEED_POWER_MIN...SPEED_POWER_MAX]
 
   #if ENABLED(SPINDLE_FEATURE)
@@ -1017,7 +990,7 @@
     #define SPINDLE_LASER_POWERUP_DELAY   50   // (ms) Delay to allow the spindle/laser to come up to speed/power
     #define SPINDLE_LASER_POWERDOWN_DELAY 50   // (ms) Delay to allow the spindle to stop
 
-    #define LASER_SAFETY_TIMEOUT_MS     1000   // (ms)
+    #define LASER_SAFETY_TIMEOUT_MS     2000   // (ms)
     //#define LASER_POWER_SYNC
     //#define LASER_POWER_TRAP
 
@@ -1104,7 +1077,7 @@
 #define GCODE_MOTION_MODES  // Remember the motion mode (G0 G1 G2 G3 G5 G38.X) and apply for X Y Z E F, etc.
 
 // Enable and set a (default) feedrate for all G0 moves
-#define G0_FEEDRATE 3000 // (mm/min)
+#define G0_FEEDRATE 5000 // (mm/min)
 #ifdef G0_FEEDRATE
   #define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
 #endif
@@ -1218,7 +1191,7 @@
   #if AXIS_IS_TMC_CONFIG(X)
     #define X_CURRENT       1200        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
-    #define X_MICROSTEPS     256        // 0..256
+    #define X_MICROSTEPS     16        // 0..256
     #define X_RSENSE          0.11     // Multiplied x1000 for TMC26X
     #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
     //#define X_INTERPOLATE  true      // Enable to override 'INTERPOLATE' for the X axis
@@ -1236,9 +1209,9 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Y)
-    #define Y_CURRENT       1200
+    #define Y_CURRENT       1000
     #define Y_CURRENT_HOME  Y_CURRENT
-    #define Y_MICROSTEPS     256
+    #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
     #define Y_CHAIN_POS      -1
     //#define Y_INTERPOLATE  true
@@ -1246,7 +1219,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Y2)
-    #define Y2_CURRENT      1200
+    #define Y2_CURRENT      1000
     #define Y2_CURRENT_HOME Y2_CURRENT
     #define Y2_MICROSTEPS    Y_MICROSTEPS
     #define Y2_RSENSE         0.11
@@ -1256,9 +1229,9 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z)
-    #define Z_CURRENT       1500
+    #define Z_CURRENT       1200
     #define Z_CURRENT_HOME  Z_CURRENT
-    #define Z_MICROSTEPS     256
+    #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
     #define Z_CHAIN_POS      -1
     //#define Z_INTERPOLATE  true
@@ -1266,7 +1239,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z2)
-    #define Z2_CURRENT      1500
+    #define Z2_CURRENT      1200
     #define Z2_CURRENT_HOME Z2_CURRENT
     #define Z2_MICROSTEPS    Z_MICROSTEPS
     #define Z2_RSENSE         0.11
@@ -1298,7 +1271,7 @@
   #if AXIS_IS_TMC_CONFIG(I)
     #define I_CURRENT      800
     #define I_CURRENT_HOME I_CURRENT
-    #define I_MICROSTEPS    16
+    #define I_MICROSTEPS    64
     #define I_RSENSE         0.11
     #define I_CHAIN_POS     -1
     //#define I_INTERPOLATE  true
@@ -1308,7 +1281,7 @@
   #if AXIS_IS_TMC_CONFIG(J)
     #define J_CURRENT      800
     #define J_CURRENT_HOME J_CURRENT
-    #define J_MICROSTEPS    16
+    #define J_MICROSTEPS    64
     #define J_RSENSE         0.11
     #define J_CHAIN_POS     -1
     //#define J_INTERPOLATE  true
@@ -1318,7 +1291,7 @@
   #if AXIS_IS_TMC_CONFIG(K)
     #define K_CURRENT      800
     #define K_CURRENT_HOME K_CURRENT
-    #define K_MICROSTEPS    16
+    #define K_MICROSTEPS    64
     #define K_RSENSE         0.11
     #define K_CHAIN_POS     -1
     //#define K_INTERPOLATE  true
@@ -1328,7 +1301,7 @@
   #if AXIS_IS_TMC_CONFIG(U)
     #define U_CURRENT      800
     #define U_CURRENT_HOME U_CURRENT
-    #define U_MICROSTEPS     8
+    #define U_MICROSTEPS     64
     #define U_RSENSE         0.11
     #define U_CHAIN_POS     -1
     //#define U_INTERPOLATE  true
@@ -1357,7 +1330,7 @@
 
   #if AXIS_IS_TMC_CONFIG(E0)
     #define E0_CURRENT      800
-    #define E0_MICROSTEPS    16
+    #define E0_MICROSTEPS    64
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
     //#define E0_INTERPOLATE true
@@ -1431,15 +1404,15 @@
 
   // @section tmc/stealthchop
   #if HAS_STEALTHCHOP
-    #define STEALTHCHOP_XY
-    #define STEALTHCHOP_Z
-    #define STEALTHCHOP_I
-    #define STEALTHCHOP_J
-    #define STEALTHCHOP_K
-    #define STEALTHCHOP_U
-    #define STEALTHCHOP_V
-    #define STEALTHCHOP_W
-    #define STEALTHCHOP_E
+    // #define STEALTHCHOP_XY
+    // #define STEALTHCHOP_Z
+    // #define STEALTHCHOP_I
+    // #define STEALTHCHOP_J
+    // #define STEALTHCHOP_K
+    // #define STEALTHCHOP_U
+    // #define STEALTHCHOP_V
+    // #define STEALTHCHOP_W
+    // #define STEALTHCHOP_E
   #endif
 
   #define CHOPPER_TIMING CHOPPER_DEFAULT_24V        // All axes (override below)
@@ -1487,7 +1460,7 @@
   #define I_HYBRID_THRESHOLD       3  // [linear=mm/s, rotational=°/s]
   #define J_HYBRID_THRESHOLD       3  // [linear=mm/s, rotational=°/s]
   #define K_HYBRID_THRESHOLD       3  // [linear=mm/s, rotational=°/s]
-  #define U_HYBRID_THRESHOLD       3  // [mm/s]
+  #define U_HYBRID_THRESHOLD       100  // [mm/s]
   #define V_HYBRID_THRESHOLD       3
   #define W_HYBRID_THRESHOLD       3
   #define E0_HYBRID_THRESHOLD     30
@@ -1501,18 +1474,18 @@
 
   #define SENSORLESS_HOMING // StallGuard capable drivers only
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)     // TMC2209: 0...255. TMC2130: -64...63
-    #define X_STALL_SENSITIVITY  50
+    #define X_STALL_SENSITIVITY  60
     #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
     #define Y_STALL_SENSITIVITY  50
     #define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
-    // #define Z_STALL_SENSITIVITY  8
-    // #define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
+    #define Z_STALL_SENSITIVITY  121
+    #define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
     //#define Z3_STALL_SENSITIVITY Z_STALL_SENSITIVITY
     //#define Z4_STALL_SENSITIVITY Z_STALL_SENSITIVITY
-    //#define I_STALL_SENSITIVITY  8
-    //#define J_STALL_SENSITIVITY  8
-    //#define K_STALL_SENSITIVITY  8
-    //#define U_STALL_SENSITIVITY  8
+    #define I_STALL_SENSITIVITY  50
+    #define J_STALL_SENSITIVITY  50
+    #define K_STALL_SENSITIVITY  50
+    // #define U_STALL_SENSITIVITY  50
     //#define V_STALL_SENSITIVITY  8
     //#define W_STALL_SENSITIVITY  8
     //#define SPI_ENDSTOPS              // TMC2130 only
